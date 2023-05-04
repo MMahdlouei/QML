@@ -1,20 +1,24 @@
-// Copyright (C) 2021 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0
+import QtQuick
 
-import QtQuick 6.4
-import QtQuick.Window 6.4
-import Swip
+Rectangle {
+    id: page
+    width: 320; height: 480
+    color: "lightgray"
 
-Window {
-    width: mainScreen.width
-    height: mainScreen.height
-
-    visible: true
-    title: "Swip"
-
-    Screen01 {
-        id: mainScreen
+    Text {
+        id: helloText
+        text: "Hello world!"
+        y: 30
+        anchors.horizontalCenter: page.horizontalCenter
+        font.pointSize: 24; font.bold: true
     }
 
-}
+    Grid {
+        id: colorPicker
+        x: 4; anchors.bottom: page.bottom; anchors.bottomMargin: 4
+        rows: 2; columns: 3; spacing: 3
 
+        Cell { cellColor: "red"; onAkbar: helloText.color = cellColor }
+
+    }
+}
